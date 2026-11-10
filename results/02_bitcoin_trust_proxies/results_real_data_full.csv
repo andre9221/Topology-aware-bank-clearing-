@@ -1,0 +1,7 @@
+dataset,algorithm,n_nodes,n_edges,total_weight,k_used,k_method,cleared_volume,pct_total_weight,pct_vs_greedy,wall_time_s,n_repairs,hub_ilp_vars,hub_ilp_time_s,feasible
+Bitcoin OTC,Greedy,5881,32029,62947,-,-,53134,84.4107,100.0,0.06443,0,-,-,True
+Bitcoin OTC,FPT-Fixed,5881,32029,62947,80,fixed_6pct,53232,84.5664,100.1844,4.082469,18,4811,0.441893,True
+Bitcoin OTC,FPT-Auto,5881,32029,62947,11,degree_ratio,53090,84.3408,99.9172,3.131589,0,1140,0.201243,True
+Bitcoin Alpha,Greedy,3783,22650,45202,-,-,38936,86.1378,100.0,0.046354,0,-,-,True
+Bitcoin Alpha,FPT-Fixed,3783,22650,45202,80,fixed_6pct,39214,86.7528,100.714,2.227565,6,3763,0.337238,True
+Bitcoin Alpha,FPT-Auto,3783,22650,45202,18,degree_ratio,39054,86.3988,100.3031,1.431129,1,970,0.147122,True

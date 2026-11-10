@@ -1,0 +1,11 @@
+dataset,n_nodes,n_edges,total_weight,algorithm,cleared_volume,pct_of_optimal,pct_of_total,diff_vs_greedy_pp,time_sec,feasible
+Bitcoin Alpha,3783,22650,45202,Exact (HiGHS),42173,100.0,93.3,7.68,1.496,True
+Bitcoin Alpha,3783,22650,45202,Greedy + Local Search,41456,98.3,91.71,5.98,0.07,True
+Bitcoin Alpha,3783,22650,45202,Plain Greedy,38936,92.32,86.14,0.0,0.031,True
+Bitcoin Alpha,3783,22650,45202,HSC-Fixed (k=80),39204,92.96,86.73,0.64,1.831,True
+Bitcoin Alpha,3783,22650,45202,HSC-Auto,39056,92.61,86.4,0.28,1.077,True
+Bitcoin OTC,5881,32029,62947,Exact (HiGHS),57409,100.0,91.2,7.45,2.213,True
+Bitcoin OTC,5881,32029,62947,Greedy + Local Search,56490,98.4,89.74,5.85,0.124,True
+Bitcoin OTC,5881,32029,62947,Plain Greedy,53134,92.55,84.41,0.0,0.063,True
+Bitcoin OTC,5881,32029,62947,HSC-Fixed (k=80),53233,92.73,84.57,0.17,5.56,True
+Bitcoin OTC,5881,32029,62947,HSC-Auto,53088,92.47,84.34,-0.08,4.07,True

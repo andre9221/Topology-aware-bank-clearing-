@@ -229,3 +229,4 @@ def hsc_clearing(node_list, arcs, deposits, k_frac=0.06, time_limit=10.0):
         "is_feasible": is_feasible,
         "max_violation": max_viol,
     }
+

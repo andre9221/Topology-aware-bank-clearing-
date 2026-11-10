@@ -4,16 +4,17 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Solver: HiGHS](https://img.shields.io/badge/MIP%20Solver-HiGHS%201.5%2B-green.svg)](https://highs.dev/)
 
-Official research repository and reference implementation for:
+Official research repository, dataset results archive, and reference implementation for:
 
 > **Topology-Aware Bank Clearing: Hub–Spoke Decomposition, Cycle-Aware Heuristics, and Large-Scale Settlement**  
 > **Authors:** Andrea Amalanathan<sup>1</sup> and Sudha C<sup>2</sup>  
 > *School of Computer Science and Engineering, Vellore Institute of Technology, Chennai campus, Chennai, India*  
-> ✉ `andrea.a2024@vitstudent.ac.in` (ORCID: [0009-0005-2615-2701](https://orcid.org/0009-0005-2615-2701)) | `sudha.c@vit.ac.in`
+> ✉ `andrea.a2024@vitstudent.ac.in` (ORCID: [0009-0005-2615-2701](https://orcid.org/0009-0005-2615-2701)) | `sudha.c@vit.ac.in`  
+> 📄 **Manuscript:** [`Topology_Aware_Bank_Clearing_Renumbered.docx`](Topology_Aware_Bank_Clearing_Renumbered.docx) (also in [`paper/`](paper/))
 
 ---
 
-## 🚀 Key Positive Results & Scientific Contributions
+## 🚀 Key Positive Results & Scientific Breakthroughs
 
 The **Bank Clearing Problem (BCP)** seeks a maximum-value subset of indivisible payment obligations whose multilateral netting satisfies participant-level deposit constraints ($\text{Out}_i(X) - \text{In}_i(X) \le D_i$). While exact branch-and-cut solvers succeed on small instances, they fail under operational real-time clearing deadlines on large production networks. This repository implements and evaluates two topology-aware algorithms: **Hub–Spoke Clearing (HSC)** and **Cycle-Aware Hub–Spoke Clearing (CA-HSC)**.
 
@@ -57,18 +58,19 @@ Topology-Aware-Bank-Clearing/
 ├── LICENSE                        # MIT License
 ├── requirements.txt               # Python package dependencies
 ├── .gitignore                     # Git ignore rules for caches, venvs, and large data files
-├── paper/                         # Full manuscript and reviewer response deliverables
-│   ├── Topology_Aware_Bank_Clearing.md    # Complete paper in GitHub-Flavored Markdown
-│   ├── Topology_Aware_Bank_Clearing.docx  # Formatted Word document with styled tables & metadata
-│   ├── Response_to_Reviewers.md          # Comprehensive point-by-point reviewer responses
-│   └── Response_to_Reviewers.docx        # Response letter in Word format
+├── Topology_Aware_Bank_Clearing_Renumbered.docx  # Full revised manuscript with renumbered sections
+├── paper/                         # Paper and reviewer response deliverables
+│   ├── Topology_Aware_Bank_Clearing_Renumbered.docx # Full revised Word manuscript
+│   ├── Topology_Aware_Bank_Clearing.md   # Full GitHub-Flavored Markdown manuscript
+│   ├── Response_to_Reviewers.docx        # Response letter to peer reviewers in Word format
+│   └── Response_to_Reviewers.md          # Response letter in Markdown format
 ├── src/                           # Core algorithmic implementations
 │   ├── __init__.py
 │   ├── ca_hsc.py                  # Cycle-Aware Hub-Spoke Clearing (Stages 1–5 + feasibility check)
 │   ├── hsc.py                     # Hub-Spoke Clearing (MIP core + super-spoke aggregation + repair)
 │   ├── baselines.py               # Plain Greedy, Greedy+LS, HiGHS MIP, LP relaxation
 │   └── graph_utils.py             # Incidence CSC builder, synthetic BA generator, feasibility validator
-├── experiments/                   # Benchmark runners & reproduction scripts
+├── experiments/                   # Benchmark runners & verification suites
 │   ├── __init__.py
 │   ├── verify_all.py              # End-to-end verification suite on bundled sample network
 │   ├── run_1s_benchmark.py        # 1-second deadline comparison (reproduces Table 8 & Table 9)
@@ -77,35 +79,63 @@ Topology-Aware-Bank-Clearing/
 ├── data/                          # Data files & documentation
 │   ├── README.md                  # Dataset specifications & SNAP download instructions
 │   └── sample_clearing_network.json # Bundled 100-bank network for instant zero-config testing
-└── results/                       # Verified empirical results and execution logs
-    ├── README.md                  # Detailed breakdown of empirical findings
-    ├── empirical_benchmark_summary.csv # Verified ground truth benchmark numbers across all windows
-    └── verification_log.txt       # Pre-generated execution log confirming feasibility and runtime
+└── results/                       # Complete empirical data, raw trial CSVs, and actual solver logs
+    ├── README.md                  # Detailed mapping of every file to paper tables
+    ├── empirical_benchmark_summary.csv # Verified ground truth summary numbers
+    ├── verification_log.txt       # Pre-generated execution log confirming feasibility and runtime
+    ├── 01_scale_free_benchmarks/  # Tables 3 & 4 (30-trial synthetic runs, no-hub ablation)
+    │   ├── results_main_comparison_30trials.csv
+    │   ├── summary_main_comparison_30trials.csv
+    │   ├── results_no_hub_30trials.csv
+    │   ├── summary_no_hub_30trials.csv
+    │   ├── results_k_frac_tradeoff_30trials.csv
+    │   └── summary_k_frac_tradeoff_30trials.csv
+    ├── 02_bitcoin_trust_proxies/  # Table 6 (Bitcoin OTC & Alpha networks, 256-week longitudinal study)
+    │   ├── results_real_data_full.csv
+    │   ├── summary_real_data.csv
+    │   ├── results_real_data_weekly.csv
+    │   ├── summary_real_data_weekly.csv
+    │   ├── results_real_data_subgraph.csv
+    │   └── results_real_data_temporal.csv
+    ├── 03_stablecoin_clearing/    # Tables 7, 8, 9, 10 (1h, 12h, 24h stablecoin settlement & LP gap)
+    │   ├── rigorous_benchmark_results.csv
+    │   ├── results_hsc_comparison.csv
+    │   ├── results_stablecoin_real_flows.csv
+    │   ├── results_lp_integrality_gap.csv
+    │   ├── results_real_exact_check.csv
+    │   └── benchmark_results_snap.json
+    ├── 04_solver_logs/            # Actual execution logs from HiGHS branch-and-cut solver
+    │   ├── highs_cold_seed_1.log
+    │   ├── highs_cold_seed_2.log
+    │   ├── highs_cold_seed_42.log
+    │   ├── highs_warm_seed_1.log
+    │   ├── highs_warm_seed_2.log
+    │   ├── highs_warm_seed_42.log
+    │   └── rerun_*.log
+    └── 05_additional_sweeps/      # Table 5 & sensitivity sweeps (stress test, hardness, adaptive k)
+        ├── results_stress_test.csv
+        ├── summary_stress_test.csv
+        ├── results_hardness_sweep.csv
+        ├── summary_hardness_sweep.csv
+        ├── results_adaptive_k_30trials.csv
+        ├── summary_adaptive_k_30trials.csv
+        ├── results_density_impact_30trials.csv
+        └── summary_density_impact_30trials.csv
 ```
 
 ---
 
-## ⚙️ Installation & Environment Setup
+## ⚙️ Installation & Quickstart
 
-### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/Topology-Aware-Bank-Clearing.git
 cd Topology-Aware-Bank-Clearing
-```
 
-### 2. Create and Activate Virtual Environment
-```bash
-# Windows
+# Optional: create virtual environment
 python -m venv .venv
-.venv\Scripts\activate
+.venv\Scripts\activate   # On Windows
+# source .venv/bin/activate # On Linux/macOS
 
-# Linux / macOS
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
-### 3. Install Dependencies
-```bash
+# Install dependencies
 pip install -r requirements.txt
 ```
 
@@ -118,23 +148,6 @@ Runs all six algorithms (LP Bound, HiGHS MIP, Plain Greedy, Greedy+LS, HSC, CA-H
 ```bash
 python experiments/verify_all.py
 ```
-**Expected Output:**
-```text
-================================================================================
-TOPOLOGY-AWARE BANK CLEARING: END-TO-END VERIFICATION SUITE
-================================================================================
-Method                 | Cleared ($)  | % LP Bound | % Optimum  | Time       | Status
---------------------------------------------------------------------------------
-LP Relaxation (Bound)  | $13.3M       |    100.0% |    106.3% |     0.013s | Upper Bound
-HiGHS MIP (Optimum)    | $12.5M       |     94.1% |    100.0% |     0.298s | Optimal
-Plain Greedy           | $3.2M        |     24.0% |     25.5% |      0.3ms | Feasible
-Greedy + Local Search  | $3.3M        |     24.8% |     26.4% |      0.5ms | Feasible
-HSC (Decomposition)    | $11.7M       |     88.3% |     93.8% |     0.018s | Feasible
-CA-HSC (Proposed)      | $5.2M        |     39.2% |     41.7% |      2.0ms | Feasible
-================================================================================
-[SUCCESS] All feasibility invariants verified: Out_i(X) - In_i(X) <= D_i for all participants.
-[SUCCESS] Zero deposit violations detected across all tested algorithms.
-```
 
 ### B. Reproduce 1-Second Operational Clearing Benchmark (Table 8)
 Displays the verified head-to-head performance under the 1.0-second deadline across 1h, 12h, and 24h stablecoin networks:
@@ -142,16 +155,11 @@ Displays the verified head-to-head performance under the 1.0-second deadline acr
 python experiments/run_1s_benchmark.py
 ```
 
-### C. Demonstrate Progressive Anytime Streaming Settlement (Section 7.6)
+### C. Demonstrate Progressive Anytime Streaming Settlement (Section 6.6)
 Simulates real-time payment feed processing and logs timestamped volume milestones:
 ```bash
 python experiments/run_streaming_demo.py
 ```
-**Milestones Logged:**
-- `299 ms`: \$1.99B (24.3% of final)
-- `558 ms`: \$4.64B (56.6% of final; complete bilateral netting)
-- `741 ms`: \$7.29B (88.9% of final; hub core commitments complete)
-- `860 ms`: \$8.20B (100.0% of CA-HSC settlement complete)
 
 ### D. Run Synthetic Scale-Free Network Benchmark (Table 3 & Table 5)
 Evaluates HSC vs. Plain Greedy vs. Exact MIP on Barabási-Albert scale-free networks ($n \in \{50, 100, 250\}$):
@@ -178,19 +186,7 @@ $$\text{subject to} \quad \sum_{v:(i, v) \in A} w(i, v) \, x_{iv} - \sum_{u:(u, 
 
 ---
 
-## 📄 Paper & Documentation Deliverables
-
-The complete manuscript and peer-review response files are provided in `paper/`:
-- **Manuscript (Word):** [`paper/Topology_Aware_Bank_Clearing.docx`](paper/Topology_Aware_Bank_Clearing.docx)
-- **Manuscript (Markdown):** [`paper/Topology_Aware_Bank_Clearing.md`](paper/Topology_Aware_Bank_Clearing.md)
-- **Response to Reviewers (Word):** [`paper/Response_to_Reviewers.docx`](paper/Response_to_Reviewers.docx)
-- **Response to Reviewers (Markdown):** [`paper/Response_to_Reviewers.md`](paper/Response_to_Reviewers.md)
-
----
-
 ## 📜 Citation
-
-If you use this codebase or paper in your research, please cite:
 
 ```bibtex
 @article{amalanathan2026topology,

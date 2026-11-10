@@ -121,3 +121,4 @@ def generate_barabasi_albert_clearing_graph(n=250, m_attach=3, alpha=0.20, seed=
         deposits[nd] = max(1.0, round(alpha * outflows[nd], 2))
 
     return nodes, arcs, deposits
+

@@ -48,10 +48,11 @@ data/raw/
 token_transfers*.csv
 event_data.csv
 
-# Keep results summary CSV and sample json
-!results/*.csv
+# Allow all files in results/
+!results/**
 !data/*.json
 !data/README.md
 
-# Log files
+# Log files (except solver logs in results)
 *.log
+!results/**/*.log

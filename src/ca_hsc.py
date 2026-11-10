@@ -223,3 +223,4 @@ def ca_hsc_clearing(node_list, arcs, deposits, k_frac=0.05, k_min=10, return_det
         res["in_solution"] = in_sol
 
     return res
+

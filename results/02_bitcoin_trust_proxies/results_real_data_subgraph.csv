@@ -1,0 +1,5 @@
+algorithm,n_nodes,n_edges,total_weight,k_used,cleared_volume,pct_total_weight,pct_of_optimal,wall_time_s,ilp_status,n_repairs,hub_ilp_vars,feasible
+Exact ILP,300,6663,14957,-,14594,97.573,100.0,1.0362,Optimal,0,6663,True
+Greedy,300,6663,14957,-,14217,95.0525,97.4167,0.01362,-,0,-,True
+FPT-Fixed,300,6663,14957,18,14304,95.6342,98.0129,0.201203,-,3,198,True
+FPT-Auto,300,6663,14957,48,14282,95.4871,97.8621,0.309076,-,5,1095,True

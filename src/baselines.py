@@ -222,3 +222,4 @@ def highs_lp_relaxation(arcs, deposits, node_list, output_flag=False):
         "fractional_count": frac_cnt,
         "fractional_pct": (frac_cnt / n_arcs * 100.0) if n_arcs > 0 else 0.0,
     }
+

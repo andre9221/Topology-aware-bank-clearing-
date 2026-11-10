@@ -101,3 +101,4 @@ def run_synthetic_benchmark(sizes=[50, 100, 250], num_trials=3, alpha=0.20):
 
 if __name__ == "__main__":
     run_synthetic_benchmark(sizes=[50, 100, 250], num_trials=3)
+

@@ -1,0 +1,2 @@
+n_weeks,greedy_pct_mean,greedy_pct_std,greedy_pct_ci95,fpt_fixed_pct_mean,fpt_fixed_pct_std,fpt_fixed_pct_ci95,fpt_auto_pct_mean,fpt_auto_pct_std,fpt_auto_pct_ci95,fpt_auto_vs_greedy_mean,fpt_auto_vs_greedy_p,fpt_auto_wins,fpt_auto_win_rate_pct,fpt_fixed_vs_greedy_mean,fpt_fixed_vs_greedy_p,fpt_fixed_wins,fpt_fixed_win_rate_pct,k_auto_mean,k_auto_std,gamma_mean,gamma_std
+256,47.6891,10.6581,1.3144,49.3801,10.9982,1.3563,48.9063,10.8328,1.3359,1.2173,0.000928,144,56.25,1.691,1.6e-05,146,57.03,6.2578,5.4353,4.3395,2.2917
