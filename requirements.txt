@@ -1,0 +1,7 @@
+# Core Dependencies for Topology-Aware Bank Clearing
+numpy>=1.24.0
+scipy>=1.10.0
+networkx>=3.0
+highspy>=1.5.0
+pandas>=2.0.0
+python-docx>=1.1.0
